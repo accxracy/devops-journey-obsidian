@@ -6,16 +6,6 @@ tags:
 aliases:
  - Pod
  - Deployment
- - Репликация K8s
----
----
-tags:
- - kubernetes
- - devops
- - pods
-aliases:
- - Pod
- - Deployment
  - ReplicaSet
  - Репликация K8s
 ---
