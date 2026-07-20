@@ -29,4 +29,4 @@ aliases:
  * Твое приложение получает запрос.
 
 
-![Схема сети K8s](images/scheme.jpg)
+![Схема сети K8s](../images/scheme.jpg)
