@@ -29,4 +29,4 @@ aliases:
  * Твое приложение получает запрос.
 
 
-![[Pasted image 20260720155640.png]]
+![Схема сети K8s](images/scheme.jpg)
