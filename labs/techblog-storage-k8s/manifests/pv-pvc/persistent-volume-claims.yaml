@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: blog-data-pvc
+  namespace: techblog
+spec:
+  resources:
+    requests:
+      storage: 3Gi
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: uploads-pvc
+  namespace: techblog
+spec:
+  resources:
+    requests:
+      storage: 12Gi
+  volumeMode: Filesystem
+  storageClassName: manual
+  accessModes:
+    - ReadWriteMany
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: cache-storage-pvc
+  namespace: techblog
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: fast-storage 
+  resources:
+    requests:
+      storage: 2Gi
