@@ -34,3 +34,5 @@
 - [StatefulSet](DevOps/content/K8S/StatefulSet.md)
 - [Service Mesh](DevOps/content/K8S/ServiceMesh.md)
 - [Network Packet Way](DevOps/content/K8S/Network%20Packet%20Way.md)
+- [CoreDNS](DevOps/content/K8S/CoreDNS)
+- [Ingress](DevOps/content/K8S/Ingress)
