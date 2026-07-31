@@ -37,4 +37,4 @@
 - [CoreDNS](DevOps/content/K8S/CoreDNS.md)
 - [Ingress](DevOps/content/K8S/Ingress.md)
 - [NetworkPolicy](DevOps/content/K8S/NetworkPolicy.md)
-- 
+- [Resources](DevOps/content/K8S/Resources.md)
