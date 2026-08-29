@@ -1,0 +1,78 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-service
+  namespace: cloudshop
+  labels:
+    app: user-service
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: user-service
+      tier: business
+  template:
+    metadata:
+      labels:
+        app: user-service
+        tier: business
+    spec:
+      containers:
+        - name: apache
+          image: httpd:alpine
+          ports:
+            - containerPort: 3001
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: product-service
+  namespace: cloudshop
+  labels:
+    app: product-service
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: product-service
+      tier: business
+  template:
+    metadata:
+      labels:
+        app: product-service
+        tier: business
+    spec:
+      containers:
+        - name: apache
+          image: httpd:alpine
+          ports:
+            - containerPort: 3002
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order-service
+  namespace: cloudshop
+  labels:
+    app: order-service
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: order-service
+      tier: business
+  template:
+    metadata:
+      labels:
+        app: order-service
+        tier: business
+    spec:
+      containers:
+        - name: apache
+          image: httpd:alpine
+          ports:
+            - containerPort: 3003

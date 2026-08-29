@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: database
+  namespace: techblog
+spec:
+  selector:
+    matchLabels:
+      app: db
+  template:
+    metadata:
+      labels:
+        app: db
+    spec:
+      containers:
+      - name: postgre
+        image: postgres:13-alpine
+        ports:
+        - containerPort: 5432
+        
+        env:
+        - name: POSTGRES_DB
+          value: techblog
+        - name: POSTGRES_USER
+          value: bloguser
+        - name: POSTGRES_PASSWORD
+          value: blogpass123
+        
+        volumeMounts:
+        - name: blog-pvc
+          mountPath: /var/lib/postgresql/data
+      
+      volumes:
+      - name: blog-pvc
+        persistentVolumeClaim:
+          claimName: blog-data-pvc

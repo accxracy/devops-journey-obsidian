@@ -1,0 +1,32 @@
+PS> kubectl exec -it network-debug -n cloudshop -- nc -vz -w 5 database-service.cloudshop-secure.svc.cluster.local 5432
+
+[OUTPUT]
+Connection to database-service.cloudshop-secure.svc.cluster.local (10.97.169.254) 5432 port [tcp/postgresql] succeeded!
+--------------------------------------------------------------------------------
+
+
+PS> kubectl exec -it unauthorized-pod -n cloudshop -- nc -vz -w 5 database-service.cloudshop-secure.svc.cluster.local 5432
+
+[OUTPUT]
+nc: connect to database-service.cloudshop-secure.svc.cluster.local (10.97.169.254) port 5432 (tcp) timed out: Operation in progress
+command terminated with exit code 1
+--------------------------------------------------------------------------------
+
+
+PS> $userPod = kubectl get pod -n cloudshop -l app=user-service -o jsonpath='{.items[0].metadata.name}'
+PS> kubectl debug -it $userPod -n cloudshop --image=nicolaka/netshoot --profile=general -- nc -vz -w 5 payment-service.cloudshop-secure.svc.cluster.local 3004
+
+[OUTPUT]
+Defaulting debug container name to debugger-gv5hg.
+nc: connect to payment-service.cloudshop-secure.svc.cluster.local (10.108.170.198) port 3004 (tcp) timed out: Operation in progress
+Session ended, the ephemeral container will not be restarted...
+--------------------------------------------------------------------------------
+
+
+PS> $orderPod = kubectl get pod -n cloudshop -l app=order-service -o jsonpath='{.items[0].metadata.name}'
+PS> kubectl debug -it $orderPod -n cloudshop --image=nicolaka/netshoot --profile=general -- nc -vz -w 5 payment-service.cloudshop-secure.svc.cluster.local 3004
+
+[OUTPUT]
+Defaulting debug container name to debugger-p76t2.
+Connection to payment-service.cloudshop-secure.svc.cluster.local (10.108.170.198) 3004 port [tcp/*] succeeded!
+
