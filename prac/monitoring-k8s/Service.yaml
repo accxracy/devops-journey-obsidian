@@ -1,0 +1,19 @@
+# https://kubernetes.io/docs/concepts/services-networking/service/
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+  namespace: monitoring
+  labels:
+    app: backend-service
+spec: 
+  selector:
+    app: backend
+  type: ClusterIP
+  ports:
+  - name: metrics
+    protocol: TCP
+    port: 80
+    targetPort: mainport
+---
+

@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: prod-deploy
+  namespace: monitoring
+  labels:
+    app: backend
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: backend
+
+  template:
+    metadata:
+      labels:
+        app: backend
+
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:latest
+
+          resources:
+            requests:
+              cpu: 100m
+              memory: 100Mi
+            limits:
+              cpu: 200m
+              memory: 200Mi
+
+          ports:
+            - name: mainport
+              containerPort: 80
+
+          volumeMounts:
+            - name: data-backend
+              mountPath: /etc/data
+
+      volumes:
+        - name: data-backend
+          persistentVolumeClaim:
+            claimName: my-pvc-claim
+
+
