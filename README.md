@@ -8,6 +8,8 @@
 * [Дерево процессов и сигналы](DevOps/content/Linux/Дерево%20процессов%20и%20сигналы.md)
 * [Запуск ОС](DevOps/content/Linux/Запуск%20ОС.md)
 * [ENV и Bash](DevOps/content/Linux/ENV%20и%20Bash.md)
+* [Vim*](DevOps/content/Linux/Vim.md)
+* [Специальные права](DevOps/content/Linux/Специальные-права.md)
 ## 🌐 Сети
 - [OSI & TCP IP модели](DevOps/content/networks/OSI%20&%20TCP%20IP%20модели.md)
 - [Что происходит, когда вводишь адрес сервера в строку браузера](DevOps/content/networks/Что%20происходит,%20когда%20вводишь%20адрес%20сервера%20в%20строку%20браузера.md)
